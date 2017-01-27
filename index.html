@@ -25,15 +25,15 @@
             <b>SIDEBAR</b>
             <div class="list-group">
                 <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
-                    
+                    {{note.noteName}} 
                 </button>
             </div>
         </div>
         
         <div class="col-md-8" ng-show="displayContent">
             <b>CONTENT AREA</b>
-            <textarea class="form-control noteContent" rows="3"></textarea>
-            <button type="button" class="btn btn-link" ng-click="saveNote">Save</button>
+            <textarea ng-model="currentNote.noteContent" class="form-control noteContent" rows="3"></textarea>
+            <button type="button" class="btn btn-link" ng-click="saveNote()">Save</button>
         </div>
     </div>
 </body>
