@@ -46,7 +46,6 @@ app.controller('contentController',['$scope', function($scope) {
 
     //called when new note needs to be added
     $scope.addNewNote = function() {
-        $scope.displayNoteForMobile = true;
         document.getElementById("noteContent").contentEditable = true;
         if($scope.savedNote) {
             $scope.savedNote = false;
@@ -63,7 +62,6 @@ app.controller('contentController',['$scope', function($scope) {
     $scope.displayNote = function(noteIndex) {
         //DEBUG LOGS
         //console.log(noteIndex);
-        $scope.displayNoteForMobile = true;
         $scope.displayContent = true;
         $scope.currentNote = $scope.notes[noteIndex];
         document.getElementById("noteContent").innerHTML  = $scope.currentNote.noteContent;
@@ -72,7 +70,6 @@ app.controller('contentController',['$scope', function($scope) {
     $scope.saveNote = function() {
         //check for the local storage support
         if (typeof(Storage) !== "undefined") {
-            $scope.displayNoteForMobile = false;
             $scope.currentNote.noteContent = document.getElementById("noteContent").innerHTML;
             if($scope.currentNote.noteContent.length > 0) {
                 $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);
@@ -88,6 +85,61 @@ app.controller('contentController',['$scope', function($scope) {
                 console.log(localStorage.getItem($scope.ALL_NOTES));
                 $scope.resetCurrentNote();
                 document.getElementById("noteContent").innerHTML = "";
+                $scope.savedNote = true;
+                $scope.displayContent = false;
+            } else {
+                console.log("Empty Note");
+                alert("Pleast enter something for the note");
+                $scope.savedNote = false;
+            }
+        } else {
+            // Sorry! No Web Storage support..
+        }
+    }
+
+    //called when new note needs to be added
+    $scope.addNewNoteMobile = function() {
+        document.getElementById("noteContentMobile").contentEditable = true;
+        if($scope.savedNote) {
+            $scope.savedNote = false;
+            $scope.resetCurrentNote();
+            //add an empty note as a starter for a new note
+            $scope.notes.push($scope.currentNote);
+        } else {
+            // the current note is not saved
+            alert("Please save note being used");
+        }
+    }
+
+     //called when a note is selected to display the contents 
+    $scope.displayNoteMobile = function(noteIndex) {
+        //DEBUG LOGS
+        //console.log(noteIndex);
+        $scope.displayNoteForMobile = true;
+        $scope.displayContent = true;
+        $scope.currentNote = $scope.notes[noteIndex];
+        document.getElementById("noteContentMobile").innerHTML  = $scope.currentNote.noteContent;
+    }
+
+    $scope.saveNoteMobile = function() {
+        //check for the local storage support
+        if (typeof(Storage) !== "undefined") {
+            $scope.displayNoteForMobile = false;
+            $scope.currentNote.noteContent = document.getElementById("noteContentMobile").innerHTML;
+            if($scope.currentNote.noteContent.length > 0) {
+                $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);
+                
+                //DEBUG LOGS
+                // console.log($scope.notes);
+                // console.log($scope.currentNote);
+                // console.log($scope.notes);
+
+                // Store
+                localStorage.setItem($scope.ALL_NOTES, $scope.notes);
+                // Retrieve
+                console.log(localStorage.getItem($scope.ALL_NOTES));
+                $scope.resetCurrentNote();
+                document.getElementById("noteContentMobile").innerHTML = "";
                 $scope.savedNote = true;
                 $scope.displayContent = false;
             } else {

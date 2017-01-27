@@ -11,11 +11,23 @@
     <script type="text/javascript" src="controllers/contentController.js"></script>
 </head>
 <body ng-controller="contentController">
-    <div>
+    <div class="visible-lg visible-md">
         <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <input type="image" src="http://icons.iconarchive.com/icons/icons8/ios7/512/User-Interface-Plus-icon.png" alt="Submit" width="35" height="35" ng-click="addNewNote()">
+            </div>
+            <p class="text-center">
+                My awesome Notepad
+            </p>
+        </div>
+        </nav>
+    </div>
+    <div class="visible-xs visible-sm">
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <input type="image" src="http://icons.iconarchive.com/icons/icons8/ios7/512/User-Interface-Plus-icon.png" alt="Submit" width="35" height="35" ng-click="addNewNoteMobile()">
             </div>
             <p class="text-center">
                 My awesome Notepad
@@ -39,7 +51,7 @@
         <!-- FOR MOBILE -->
         <div class="sidebar col-md-4 visible-xs visible-sm" ng-show="!displayNoteForMobile">
             <div class="list-group">
-                <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
+                <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNoteMobile($index)">
                     {{note.noteName}} 
                 </button>
             </div>
@@ -47,7 +59,7 @@
 
         <div class="col-md-8 visible-xs visible-sm" ng-show="displayNoteForMobile">
             <p id = "noteContentMobile">{{currentNote.noteContent}}</p>
-            <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
+            <button type="button" class="btn btn-link pull-right" ng-click="saveNoteMobile()">Save</button>
         </div>
     </div>
 </body>
