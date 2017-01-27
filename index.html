@@ -46,7 +46,7 @@
         </div>
         
         <div class="col-md-8 visible-lg visible-md" ng-show="displayContent">
-            <p id = "noteContent">{{currentNote.noteContent}}</p>
+            <textarea ng-model="currentNote.noteContent" class="form-control noteContent" rows="20"></textarea>
             <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
         </div>
         <!-- SIDE BAR AND CONTENT AREA FOR MOBILE -->
@@ -59,7 +59,7 @@
         </div>
 
         <div class="col-md-8 visible-xs visible-sm" ng-show="displayNoteForMobile">
-            <p id = "noteContentMobile">{{currentNote.noteContent}}</p>
+            <textarea ng-model="currentNote.noteContent" class="form-control noteContent" rows="20"></textarea>
             <button type="button" class="btn btn-link pull-right" ng-click="saveNoteMobile()">Save</button>
         </div>
     </div>

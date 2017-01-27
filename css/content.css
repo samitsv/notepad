@@ -1,6 +1,8 @@
 /*set the content to be inside the window */
 * {
     box-sizing: border-box;
+    font-size: 25px;
+    font-family: "Helvetica Neue", Helvetica;
 } 
 
 .list-group {
@@ -31,18 +33,13 @@
     height: 60px;
 }
 
-p {
+textarea {
     font-size: 25px;
-}
+    border: none;
+    overflow: auto;
+    outline: none;
 
-button {
-    font-size: 25px;
-}
-
-#noteContent {
-    height: 80%;
-}
-
-#noteContentMobile {
-    height: 80%;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }

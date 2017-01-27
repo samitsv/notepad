@@ -46,7 +46,6 @@ app.controller('contentController',['$scope', function($scope) {
 
     //called when new note needs to be added
     $scope.addNewNote = function() {
-        document.getElementById("noteContent").contentEditable = true;
         if($scope.savedNote) {
             $scope.savedNote = false;
             $scope.resetCurrentNote();
@@ -64,13 +63,11 @@ app.controller('contentController',['$scope', function($scope) {
         //console.log(noteIndex);
         $scope.displayContent = true;
         $scope.currentNote = $scope.notes[noteIndex];
-        document.getElementById("noteContent").innerHTML  = $scope.currentNote.noteContent;
     }
 
     $scope.saveNote = function() {
         //check for the local storage support
         if (typeof(Storage) !== "undefined") {
-            $scope.currentNote.noteContent = document.getElementById("noteContent").innerHTML;
             if($scope.currentNote.noteContent.length > 0) {
                 $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);
                 
@@ -84,7 +81,6 @@ app.controller('contentController',['$scope', function($scope) {
                 // Retrieve
                 console.log(localStorage.getItem($scope.ALL_NOTES));
                 $scope.resetCurrentNote();
-                document.getElementById("noteContent").innerHTML = "";
                 $scope.savedNote = true;
                 $scope.displayContent = false;
             } else {
@@ -100,7 +96,6 @@ app.controller('contentController',['$scope', function($scope) {
 /* METHODS FOR MOBILE */
     //called when new note needs to be added
     $scope.addNewNoteMobile = function() {
-        document.getElementById("noteContentMobile").contentEditable = true;
         if($scope.savedNote) {
             $scope.savedNote = false;
             $scope.resetCurrentNote();
@@ -119,14 +114,12 @@ app.controller('contentController',['$scope', function($scope) {
         $scope.displayNoteForMobile = true;
         $scope.displayContent = true;
         $scope.currentNote = $scope.notes[noteIndex];
-        document.getElementById("noteContentMobile").innerHTML  = $scope.currentNote.noteContent;
     }
 
     $scope.saveNoteMobile = function() {
         //check for the local storage support
         if (typeof(Storage) !== "undefined") {
             $scope.displayNoteForMobile = false;
-            $scope.currentNote.noteContent = document.getElementById("noteContentMobile").innerHTML;
             if($scope.currentNote.noteContent.length > 0) {
                 $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);
                 
@@ -140,7 +133,6 @@ app.controller('contentController',['$scope', function($scope) {
                 // Retrieve
                 console.log(localStorage.getItem($scope.ALL_NOTES));
                 $scope.resetCurrentNote();
-                document.getElementById("noteContentMobile").innerHTML = "";
                 $scope.savedNote = true;
                 $scope.displayContent = false;
             } else {
