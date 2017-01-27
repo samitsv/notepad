@@ -13,25 +13,28 @@ app.controller('contentController',['$scope', function($scope) {
 
     //check for the local storage support
     if (typeof(Storage) !== "undefined") {
-        // Retrieve
+        // Get all the notes
         console.log(localStorage.getItem(ALL_NOTES));
         $scope.notes = localStorage.getItem(ALL_NOTES);
         if($scope.notes !== null) {
             $scope.noteNumber = $scope.notes.length;
         } else {
+            //else set the note to empty array
             $scope.notes = [];
             $scope.noteNumber = 0;
         }
     } else {
         // Sorry! No Web Storage support..
+        console.log("The browser does not support web storage")
     }
 
-    //note object
+    //current note object - the note being edited
     $scope.currentNote = {
         noteName: "",
         noteContent: ""
     }
 
+    //reset the current node object
     $scope.resetCurrentNote = function() {
             $scope.currentNote = {
             noteName: "",
@@ -39,14 +42,20 @@ app.controller('contentController',['$scope', function($scope) {
         }
     }
 
+    //called when new note needs to be added
     $scope.addNewNote = function() {
         if($scope.savedNote) {
             $scope.savedNote = false;
             $scope.resetCurrentNote();
+            //add an empty note as a starter for a new note
             $scope.notes.push($scope.currentNote);
+        } else {
+            // the current note is not saved
+            alert("Please save note being used");
         }
     }
 
+    //called when a note is selected to display the contents 
     $scope.displayNote = function(noteIndex) {
         console.log(noteIndex);
         $scope.displayContent = true;
@@ -72,6 +81,7 @@ app.controller('contentController',['$scope', function($scope) {
                 $scope.savedNote = true;
             } else {
                 console.log("Empty Note");
+                alert("Pleast enter something for the note");
                 $scope.savedNote = false;
             }
         } else {
