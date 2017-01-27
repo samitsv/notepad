@@ -1,5 +1,5 @@
-var angular = angular.module('notepad', []);
+var app = angular.module('notepad', []);
 
 angular.element(function() {
-    angular.bootstrap(document, [notepad]);
+    angular.bootstrap(document, ['notepad']);
 });
