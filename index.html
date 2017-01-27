@@ -24,7 +24,7 @@
         </nav>
     </div>
     <div class="row">
-        <div id="sidebar" class="col-md-4 visible-lg visible-md">
+        <div class=" sidebar col-md-4 visible-lg visible-md">
             <div class="list-group">
                 <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
                     {{note.noteName}} 
@@ -37,7 +37,7 @@
             <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
         </div>
         <!-- FOR MOBILE -->
-        <div id="sidebar" class="col-md-4 visible-xs visible-sm" ng-show="!displayNoteForMobile">
+        <div class="sidebar col-md-4 visible-xs visible-sm" ng-show="!displayNoteForMobile">
             <div class="list-group">
                 <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
                     {{note.noteName}} 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-md-8 visible-xs visible-sm" ng-show="displayNoteForMobile">
-            <p id = "noteContent">{{currentNote.noteContent}}</p>
+            <p id = "noteContentMobile">{{currentNote.noteContent}}</p>
             <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
         </div>
     </div>

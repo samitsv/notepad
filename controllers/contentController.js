@@ -46,6 +46,7 @@ app.controller('contentController',['$scope', function($scope) {
 
     //called when new note needs to be added
     $scope.addNewNote = function() {
+        $scope.displayNoteForMobile = true;
         document.getElementById("noteContent").contentEditable = true;
         if($scope.savedNote) {
             $scope.savedNote = false;
