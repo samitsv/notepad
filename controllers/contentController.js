@@ -11,6 +11,8 @@ app.controller('contentController',['$scope', function($scope) {
     //all notes 
     $scope.notes = [];
 
+    $scope.displayNoteFoMobile = false;
+
     //check for the local storage support
     if (typeof(Storage) !== "undefined") {
         // Get all the notes
@@ -60,6 +62,7 @@ app.controller('contentController',['$scope', function($scope) {
     $scope.displayNote = function(noteIndex) {
         //DEBUG LOGS
         //console.log(noteIndex);
+        $scope.displayNoteForMobile = true;
         $scope.displayContent = true;
         $scope.currentNote = $scope.notes[noteIndex];
         document.getElementById("noteContent").innerHTML  = $scope.currentNote.noteContent;
@@ -68,6 +71,7 @@ app.controller('contentController',['$scope', function($scope) {
     $scope.saveNote = function() {
         //check for the local storage support
         if (typeof(Storage) !== "undefined") {
+            $scope.displayNoteForMobile = false;
             $scope.currentNote.noteContent = document.getElementById("noteContent").innerHTML;
             if($scope.currentNote.noteContent.length > 0) {
                 $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);

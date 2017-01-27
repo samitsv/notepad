@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My awesome Notepad</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/content.css">
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="main.js"></script>
@@ -25,7 +24,7 @@
         </nav>
     </div>
     <div class="row">
-        <div id="sidebar" class="col-md-4">
+        <div id="sidebar" class="col-md-4 visible-lg visible-md">
             <div class="list-group">
                 <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
                     {{note.noteName}} 
@@ -34,6 +33,19 @@
         </div>
         
         <div class="col-md-8 visible-lg visible-md" ng-show="displayContent">
+            <p id = "noteContent">{{currentNote.noteContent}}</p>
+            <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
+        </div>
+        <!-- FOR MOBILE -->
+        <div id="sidebar" class="col-md-4 visible-xs visible-sm" ng-show="!displayNoteForMobile">
+            <div class="list-group">
+                <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
+                    {{note.noteName}} 
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-8 visible-xs visible-sm" ng-show="displayNoteForMobile">
             <p id = "noteContent">{{currentNote.noteContent}}</p>
             <button type="button" class="btn btn-link pull-right" ng-click="saveNote()">Save</button>
         </div>

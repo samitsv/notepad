@@ -41,13 +41,3 @@ button {
 #noteContent {
     height: 80%;
 }
-
-@media (max-width: 767px) {
-    /* CSS goes here */
-    #sidebar {
-    }
-
-    #noteContent {
-        visibility: hidden;
-    }
-}
