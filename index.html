@@ -15,14 +15,15 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <input type="image" src="http://icons.iconarchive.com/icons/icons8/ios7/512/User-Interface-Plus-icon.png" alt="Submit" width="35" height="35" ng-click="addNewNote()">
-                    My awesome Notepad
             </div>
+            <p class="text-center">
+                My awesome Notepad
+            </p>
         </div>
         </nav>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <b>SIDEBAR</b>
             <div class="list-group">
                 <button type="button" class="list-group-item" ng-repeat="note in notes" ng-click="displayNote($index)">
                     {{note.noteName}} 
