@@ -44,6 +44,7 @@ app.controller('contentController',['$scope', function($scope) {
 
     //called when new note needs to be added
     $scope.addNewNote = function() {
+        document.getElementById("noteContent").contentEditable = true;
         if($scope.savedNote) {
             $scope.savedNote = false;
             $scope.resetCurrentNote();
@@ -57,27 +58,31 @@ app.controller('contentController',['$scope', function($scope) {
 
     //called when a note is selected to display the contents 
     $scope.displayNote = function(noteIndex) {
-        console.log(noteIndex);
+        //DEBUG LOGS
+        //console.log(noteIndex);
         $scope.displayContent = true;
         $scope.currentNote = $scope.notes[noteIndex];
+        document.getElementById("noteContent").innerHTML  = $scope.currentNote.noteContent;
     }
 
     $scope.saveNote = function() {
         //check for the local storage support
         if (typeof(Storage) !== "undefined") {
-
+            $scope.currentNote.noteContent = document.getElementById("noteContent").innerHTML;
             if($scope.currentNote.noteContent.length > 0) {
                 $scope.currentNote.noteName = $scope.currentNote.noteContent.substring(0,20);
                 
-                console.log($scope.notes);
-                console.log($scope.currentNote);
-                console.log($scope.notes);
+                //DEBUG LOGS
+                // console.log($scope.notes);
+                // console.log($scope.currentNote);
+                // console.log($scope.notes);
 
                 // Store
                 localStorage.setItem($scope.ALL_NOTES, $scope.notes);
                 // Retrieve
                 console.log(localStorage.getItem($scope.ALL_NOTES));
                 $scope.resetCurrentNote();
+                document.getElementById("noteContent").innerHTML = "";
                 $scope.savedNote = true;
             } else {
                 console.log("Empty Note");
