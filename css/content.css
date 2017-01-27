@@ -20,19 +20,18 @@
     border-bottom: 1px solid #555555;
 }
 .sidebar {
+
     border-top: 0;
     border-left: 0;
     border-right: 1px solid #555555;
     border-bottom: 0;
 }
 
-button {
-    border:0px solid transparent;
+.list-group-item {
+    border:1px solid #EEEEEE;
+    height: 60px;
 }
 
-.content {
-
-}
 
 p {
     font-size: 25px;
