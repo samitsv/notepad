@@ -16,6 +16,7 @@
     border-bottom: 2px solid #555555;
 }
 .sidebar {
+    height: 100%;
     padding-left: 30;
     border-top: 0;
     border-left: 0;
@@ -37,6 +38,6 @@ button {
     font-size: 25px;
 }
 
-textarea {
-    font-size: 25px;
+#noteContent {
+    height: 80%;
 }
