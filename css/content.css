@@ -34,10 +34,10 @@
 }
 
 textarea {
-    font-size: 25px;
-    border: none;
-    overflow: auto;
-    outline: none;
+    font-size: 25px !important;
+    border: none !important;
+    overflow: auto !important;
+    outline: none !important;
 
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
