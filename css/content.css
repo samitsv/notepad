@@ -5,3 +5,7 @@
 .noteContent {
     border: 1px solid #EEEEEE
 }
+
+.list-group {
+    border: 0
+}
