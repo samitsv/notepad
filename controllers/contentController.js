@@ -3,7 +3,11 @@ var app = angular.module('notepad');
 app.controller('contentController',['$scope', function($scope) {
     //display note only when clicked
     let ALL_NOTES = "ALL_NOTES";
+    //display note content
     $scope.displayContent = false;
+    //boolean value to check whether the new note was saved or note
+    //if not saved, do not create a new empty note
+    $scope.savedNote = true;
     //all notes 
     $scope.notes = [];
 
@@ -36,8 +40,11 @@ app.controller('contentController',['$scope', function($scope) {
     }
 
     $scope.addNewNote = function() {
-        $scope.resetCurrentNote();
-        $scope.notes.push($scope.currentNote);
+        if($scope.savedNote) {
+            $scope.savedNote = false;
+            $scope.resetCurrentNote();
+            $scope.notes.push($scope.currentNote);
+        }
     }
 
     $scope.displayNote = function(noteIndex) {
@@ -62,8 +69,10 @@ app.controller('contentController',['$scope', function($scope) {
                 // Retrieve
                 console.log(localStorage.getItem($scope.ALL_NOTES));
                 $scope.resetCurrentNote();
+                $scope.savedNote = true;
             } else {
                 console.log("Empty Note");
+                $scope.savedNote = false;
             }
         } else {
             // Sorry! No Web Storage support..
