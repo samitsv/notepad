@@ -1,3 +1,4 @@
+/*set the content to be inside the window */
 * {
     box-sizing: border-box;
 } 
@@ -31,7 +32,6 @@
 
 p {
     font-size: 25px;
-    padding: 5 5 5 5;
 }
 
 button {
@@ -40,4 +40,16 @@ button {
 
 #noteContent {
     height: 80%;
+}
+
+@media (max-width: 767px) {
+    /* CSS goes here */
+    .sidebar {
+        height: 100%;
+        padding-left: 30;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 2px solid #555555;
+    }
 }

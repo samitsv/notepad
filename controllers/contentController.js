@@ -38,7 +38,7 @@ app.controller('contentController',['$scope', function($scope) {
     $scope.resetCurrentNote = function() {
             $scope.currentNote = {
             noteName: "",
-            noteContent: ""
+            noteContent: "Enter Text Here..."
         }
     }
 
@@ -84,6 +84,7 @@ app.controller('contentController',['$scope', function($scope) {
                 $scope.resetCurrentNote();
                 document.getElementById("noteContent").innerHTML = "";
                 $scope.savedNote = true;
+                $scope.displayContent = false;
             } else {
                 console.log("Empty Note");
                 alert("Pleast enter something for the note");
