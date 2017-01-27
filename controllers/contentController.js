@@ -1,8 +1,6 @@
 var app = angular.module('notepad');
 
 app.controller('contentController',['$scope', function($scope) {
-    //display note only when clicked
-    let ALL_NOTES = "ALL_NOTES";
     //display note content
     $scope.displayContent = false;
     //boolean value to check whether the new note was saved or note
@@ -13,11 +11,12 @@ app.controller('contentController',['$scope', function($scope) {
 
     $scope.displayNoteFoMobile = false;
 
+    
     //check for the local storage support
     if (typeof(Storage) !== "undefined") {
         // Get all the notes
-        console.log(localStorage.getItem(ALL_NOTES));
-        $scope.notes = localStorage.getItem(ALL_NOTES);
+        console.log(JSON.parse(localStorage.getItem("ALL_NOTES")));
+        $scope.notes = JSON.parse(localStorage.getItem("ALL_NOTES"));
         if($scope.notes !== null) {
             $scope.noteNumber = $scope.notes.length;
         } else {
@@ -39,9 +38,9 @@ app.controller('contentController',['$scope', function($scope) {
     //reset the current node object
     $scope.resetCurrentNote = function() {
             $scope.currentNote = {
-            noteName: "",
-            noteContent: "Enter Text Here..."
-        }
+                noteName: "",
+                noteContent: "Enter Text Here..."
+            }
     }
 
     //called when new note needs to be added
@@ -77,9 +76,9 @@ app.controller('contentController',['$scope', function($scope) {
                 // console.log($scope.notes);
 
                 // Store
-                localStorage.setItem($scope.ALL_NOTES, $scope.notes);
-                // Retrieve
-                console.log(localStorage.getItem($scope.ALL_NOTES));
+                console.log("JSON:" + JSON.stringify($scope.notes));
+                localStorage.setItem("ALL_NOTES", JSON.stringify($scope.notes));
+
                 $scope.resetCurrentNote();
                 $scope.savedNote = true;
                 $scope.displayContent = false;
@@ -129,9 +128,9 @@ app.controller('contentController',['$scope', function($scope) {
                 // console.log($scope.notes);
 
                 // Store
-                localStorage.setItem($scope.ALL_NOTES, $scope.notes);
-                // Retrieve
-                console.log(localStorage.getItem($scope.ALL_NOTES));
+                console.log("JSON:" + JSON.stringify($scope.notes));
+                localStorage.setItem("ALL_NOTES", JSON.stringify($scope.notes));
+                // console.log(localStorage.getItem(""ALL_NOTES""));
                 $scope.resetCurrentNote();
                 $scope.savedNote = true;
                 $scope.displayContent = false;
