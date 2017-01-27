@@ -97,6 +97,7 @@ app.controller('contentController',['$scope', function($scope) {
         }
     }
 
+/* METHODS FOR MOBILE */
     //called when new note needs to be added
     $scope.addNewNoteMobile = function() {
         document.getElementById("noteContentMobile").contentEditable = true;
