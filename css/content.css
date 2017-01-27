@@ -17,13 +17,12 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid #555555;
+    border-bottom: 2px solid #555555;
 }
 .sidebar {
-
     border-top: 0;
     border-left: 0;
-    border-right: 1px solid #555555;
+    border-right: 2px solid #555555;
     border-bottom: 0;
 }
 
